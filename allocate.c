@@ -1,11 +1,6 @@
 # include "allocate.h"
 
-void	ft_bzero(void *s, size_t n)
-{
-	ft_memset(s, 0, n);
-}
-
-void	*ft_memset(void *b, int c, size_t len)
+static void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;
 	unsigned char	*buffer;
@@ -20,7 +15,12 @@ void	*ft_memset(void *b, int c, size_t len)
 	return (buffer);
 }
 
-void	*ft_calloc(size_t count, size_t size)
+static void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}
+
+static void	*ft_calloc(size_t count, size_t size)
 {
 	void	*loc;
 	size_t	bytes;
@@ -59,7 +59,8 @@ void	cleanup(t_allocate **collec)
 	while (set)
 	{
 		next = set->next;
-		(free(set->block), set->block = NULL);
+		if (set->block)
+			free(set->block);
 		(free(set), set = next);
 	}
 }

@@ -11,4 +11,7 @@ typedef struct s_allocate
 	struct s_allocate	*next;
 }						t_allocate;
 
+void	cleanup(t_allocate **collec);
+void	*allocate(t_allocate **collec, size_t count, size_t size);
+
 #endif
