@@ -63,4 +63,5 @@ void	cleanup(t_allocate **collec)
 			free(set->block);
 		(free(set), set = next);
 	}
+	*collec = NULL;
 }
