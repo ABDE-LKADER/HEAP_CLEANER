@@ -1,4 +1,4 @@
-# include "allocate.h"
+#include "allocate.h"
 
 static void	*ft_memset(void *b, int c, size_t len)
 {
@@ -38,7 +38,7 @@ static void	*ft_calloc(size_t count, size_t size)
 
 void	*allocate(t_allocate **collec, size_t count, size_t size)
 {
-	t_allocate *new;
+	t_allocate	*new;
 
 	new = malloc(sizeof(t_allocate));
 	if (!new)
@@ -52,8 +52,8 @@ void	*allocate(t_allocate **collec, size_t count, size_t size)
 
 void	cleanup(t_allocate **collec)
 {
-	t_allocate *set;
-	t_allocate *next;
+	t_allocate	*set;
+	t_allocate	*next;
 
 	set = *collec;
 	while (set)
